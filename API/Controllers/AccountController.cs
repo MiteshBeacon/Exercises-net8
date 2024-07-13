@@ -18,16 +18,17 @@ namespace API.Controllers
         {
             if (await UserExists(registerDto.Username)) { return BadRequest("User is already exists!"); }
 
-            using var hmac=new HMACSHA512();
-            var user = new AppUser
-            {
-                UserName = registerDto.Username,
-                PasswordHas = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
-                PasswordSalt = hmac.Key
-            };
-            dataContext.Add(user);
-            await dataContext.SaveChangesAsync();
-            return Ok(user);
+            return Ok();
+            //using var hmac=new HMACSHA512();
+            //var user = new AppUser
+            //{
+            //    UserName = registerDto.Username,
+            //    PasswordHas = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+            //    PasswordSalt = hmac.Key
+            //};
+            //dataContext.Add(user);
+            //await dataContext.SaveChangesAsync();
+            //return Ok(user);
         }
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
