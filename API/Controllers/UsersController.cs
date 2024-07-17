@@ -9,7 +9,7 @@ namespace API.Controllers
 {
     //[Route("api/[controller]")]
     //[ApiController]
-    //[Authorize]
+    [Authorize]
     public class UsersController : BaseApiController
     {
         private readonly DataContext _dataContext;
