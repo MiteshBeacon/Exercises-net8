@@ -65,7 +65,6 @@ jobs:
             cd D:\Mitesh\TestWebsiteCICD
             rm -r * # Clean the target directory
             scp -r ./publish/* D:\Mitesh\TestWebsiteCICD
-            # Restart-WebApp.ps1 # Restart the IIS site
 
       # - name: Deploy to Azure Web App
         # uses: azure/webapps-deploy@v2
