@@ -45,27 +45,6 @@ jobs:
 
       - name: Publish
         run: dotnet publish -c Release -o publish
-        
-        
-    deploy:
-        runs-on: ubuntu-latest
-        needs: build
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy to Remote Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            cd D:\Mitesh\TestWebsiteCICD
-            rm -r * # Clean the target directory
-            scp -r ./publish/* D:\Mitesh\TestWebsiteCICD
-            # Restart-WebApp.ps1 # Restart the IIS site
 
       # - name: Deploy to Azure Web App
         # uses: azure/webapps-deploy@v2
